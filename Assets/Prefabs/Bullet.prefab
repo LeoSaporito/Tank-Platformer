@@ -230,7 +230,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 631263ddcf181c64392d88419c273869, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BulletMovement
-  power: 2
+  power: 16
 --- !u!114 &-2118141102618744667
 MonoBehaviour:
   m_ObjectHideFlags: 0

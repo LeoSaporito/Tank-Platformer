@@ -4,20 +4,17 @@ public class PlayerShooting : MonoBehaviour
 {
     public GameObject bullet;
     public Transform bulletTransform;
-    public bool canFire;
-    private void Start()
-    {
-        canFire = true;
-    }
+    public bool goalReached;
+    public float fastBullet;
+    public float slowBullet;
     void Update()
     {
     }
-    public void SpawnBullet()
+    public void SpawnBullet(float power)
     {
-        if (canFire)
-        {
-        }
-            canFire = false;
-            Instantiate(bullet, bulletTransform.position, transform.rotation);
+        if (goalReached) { return; }
+
+        GameObject bulletSpawned = Instantiate(bullet, bulletTransform.position, transform.rotation);
+        bulletSpawned.GetComponent<BulletMovement>().power = power;
     }
 }

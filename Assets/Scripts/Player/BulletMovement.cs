@@ -13,7 +13,7 @@ public class BulletMovement : MonoBehaviour
 
         Vector2 direction = mousePosition - (Vector2)transform.position;
         float distance = Vector2.Distance(transform.position, mousePosition);
-        rb.linearVelocity = new Vector2(direction.x, direction.y).normalized * distance * power;
+        rb.linearVelocity = new Vector2(direction.x, direction.y).normalized * power;
 
         Vector3 rotation = (Vector2)transform.position - mousePosition;
 

@@ -7,10 +7,11 @@ public class PlayerMovement : MonoBehaviour
     public Vector2 position;
     public float moveSpeed;
     public float jumpForce;
-
+    public float currentSpeed;
+    public float maxSpeed;
     private Rigidbody2D rb;
-
     public bool isGrounded;
+    public bool goalReached;
 
     void Start()
     {
@@ -18,20 +19,33 @@ public class PlayerMovement : MonoBehaviour
     }
     void FixedUpdate()
     {
-        rb.linearVelocity = new Vector2(rb.linearVelocity.x, rb.linearVelocity.y);
+        if(goalReached) { return;  }
+
+        SpeedController();
+
+        rb.linearVelocity = new Vector2(currentSpeed, rb.linearVelocity.y);
     }
-    private void Update()
+    public void SpeedController()
     {
-        position = transform.position;
-        position += Time.deltaTime * moveSpeed * directionalInput;
-        transform.position = position;
+        currentSpeed = rb.linearVelocity.x + directionalInput.x * moveSpeed * Time.fixedDeltaTime;
+
+        if (Mathf.Abs(currentSpeed) > maxSpeed)
+        {
+            currentSpeed = maxSpeed * Mathf.Sign(currentSpeed);
+        }
+
+        if(currentSpeed <= 0.1f && currentSpeed >= -0.1f)
+        {
+            currentSpeed = 0f;
+        }
     }
     public void Jump()
     {
-        if(!isGrounded) { return; }
+        if (goalReached) { return; }
+        if (!isGrounded) { return; }
 
         isGrounded = false;
-        rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
+        rb.linearVelocity = new Vector2(currentSpeed, jumpForce);
     }
     private void OnCollisionEnter2D(Collision2D other)
     {
