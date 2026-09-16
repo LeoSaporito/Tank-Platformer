@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 8199073480495571092}
   - component: {fileID: 8021757482826439024}
   - component: {fileID: 5244510234538423439}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Player Tank
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -404,7 +404,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlayerShooting
   bullet: {fileID: 4621902105196537777, guid: 1cd524cf4874b6743a4b87e71fd53b7a, type: 3}
   bulletTransform: {fileID: 9193498488677670955}
-  canFire: 0
   goalReached: 0
   fastBullet: 15
   slowBullet: 6

@@ -16,5 +16,6 @@ public class PlayerShooting : MonoBehaviour
 
         GameObject bulletSpawned = Instantiate(bullet, bulletTransform.position, transform.rotation);
         bulletSpawned.GetComponent<BulletMovement>().power = power;
+        bulletSpawned.GetComponent<BulletMovement>().playerShooting = this;
     }
 }
